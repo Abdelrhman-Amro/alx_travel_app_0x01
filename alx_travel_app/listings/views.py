@@ -1,18 +1,9 @@
-from django.shortcuts import render
-from rest_framework.viewsets import ModelViewSet
-from .models import Listing, Booking
-from .serializers import ListingSerializer, BookingSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-class ListingViewSet(ModelViewSet):
-    """
-    API endpoint for managing Listings.
-    """
-    queryset = Listing.objects.all()
-    serializer_class = ListingSerializer
 
-class BookingViewSet(ModelViewSet):
-    """
-    API endpoint for managing Bookings.
-    """
-    queryset = Booking.objects.all()
-    serializer_class = BookingSerializer
+# Create your views here.
+@api_view(("GET",))
+def index(request):
+    data = {"message": "Hello, world!"}
+    return Response(data, status=200)
