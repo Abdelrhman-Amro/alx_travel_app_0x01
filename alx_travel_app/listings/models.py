@@ -74,7 +74,7 @@ class Review(models.Model):
             MaxValueValidator(5),
         ]
     )
-    comment = models.TextField()
+    comment = models.TextField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Relationships
@@ -88,4 +88,4 @@ class Review(models.Model):
         verbose_name = "Review"
 
     def __str__(self):
-        return f"{self.guest.username} - {self.listing.name}"
+        return f"{self.user.username} - {self.listing.name}"
